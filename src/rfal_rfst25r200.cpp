@@ -913,7 +913,7 @@ void RfalRfST25R200Class::rfalErrorHandling(void)
 
     /*******************************************************************************/
     /* EMD Handling - NFC Forum Digital 1.1  4.1.1.1 ; EMVCo v2.5  4.9.2           */
-    /* ReEnable the receiver on frames with a length < 4 bytes, upon:              */
+    /* Re-enable the receiver on frames with a length < 4 bytes, upon:              */
     /*   - Collision or Framing error detected                                     */
     /*   - Residual bits are detected (hard framing error)                         */
     /*   - Parity error                                                            */
@@ -934,7 +934,7 @@ void RfalRfST25R200Class::rfalErrorHandling(void)
         ((gRFAL.TxRx.status == ERR_RF_COLLISION) || (gRFAL.TxRx.status == ERR_FRAMING) ||
          (gRFAL.TxRx.status == ERR_PAR)          || (gRFAL.TxRx.status == ERR_CRC)     ||
          rxHasIncParError)) {
-      /* Ignore this reception, ReEnable receiver which also clears the FIFO */
+      /* Ignore this reception, Re-enable receiver which also clears the FIFO */
       st25r200ExecuteCommand(ST25R200_CMD_UNMASK_RECEIVE_DATA);
 
       /* Ensure that the NRT has not expired meanwhile */
@@ -1386,7 +1386,7 @@ void RfalRfST25R200Class::rfalTransceiveRx(void)
       }
 
       if ((irqs & ST25R200_IRQ_MASK_RX_REST) != 0U) {
-        /* RX_REST indicates that Receiver has been reseted due to EMD, therefore a RXS + RXE should *
+        /* RX_REST indicates that Receiver has been reset due to EMD, therefore a RXS + RXE should *
          * follow if a good reception is followed within the valid initial timeout                   */
 
         /* Check whether NRT has expired already, if so signal a timeout */
@@ -1748,7 +1748,7 @@ ReturnCode RfalRfST25R200Class::rfalISO14443AStartTransceiveAnticollisionFrame(u
   }
 
   /*******************************************************************************/
-  /* Set speficic Analog Config for Anticolission if needed */
+  /* Set specific Analog Config for Anticolission if needed */
   rfalSetAnalogConfig((RFAL_ANALOG_CONFIG_POLL | RFAL_ANALOG_CONFIG_TECH_NFCA | RFAL_ANALOG_CONFIG_BITRATE_COMMON | RFAL_ANALOG_CONFIG_ANTICOL));
 
 
@@ -2157,7 +2157,7 @@ ReturnCode RfalRfST25R200Class::rfalWakeUpModeStart(const rfalWakeUpConfig *conf
   uint32_t               irqs;
 
 
-  /* The Wake-Up procedure is further detailled in Application Note: AN5993 */
+  /* The Wake-Up procedure is further detailed in Application Note: AN5993 */
 
   if (config == NULL) {
     gRFAL.wum.cfg.period       = RFAL_WUM_PERIOD_215MS;
@@ -2190,7 +2190,7 @@ ReturnCode RfalRfST25R200Class::rfalWakeUpModeStart(const rfalWakeUpConfig *conf
 
   /* Check for valid configuration */
   if (((gRFAL.wum.cfg.indAmp.enabled == false) && (gRFAL.wum.cfg.cap.enabled == false))   ||               /* Running wake-up requires one of the modes being enabled      */
-      ((gRFAL.wum.cfg.indAmp.enabled == true)  && (gRFAL.wum.cfg.indAmp.threshold == 0U))    ||               /* If none of the treshold bits is set the WU will not executed */
+      ((gRFAL.wum.cfg.indAmp.enabled == true)  && (gRFAL.wum.cfg.indAmp.threshold == 0U))    ||               /* If none of the threshold bits is set the WU will not executed */
       ((gRFAL.wum.cfg.cap.enabled == true)  && (gRFAL.wum.cfg.cap.threshold == 0U))
      ) {
     return ERR_PARAM;

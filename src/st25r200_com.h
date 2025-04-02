@@ -104,7 +104,7 @@
 #define ST25R200_REG_MRT_SQT_CONF                          0x1BU    /*!< RW Mask Receive and Squelch Timer Configuration Register          */
 #define ST25R200_REG_MRT                                   0x1CU    /*!< RW Mask Receive Timer Register                                    */
 #define ST25R200_REG_SQT                                   0x1DU    /*!< RW Squelch Timer Register                                         */
-#define ST25R200_REG_NRT_GPT_CONF                          0x1EU    /*!< RW No Response and Genereal Purpose Timer Configuration Register  */
+#define ST25R200_REG_NRT_GPT_CONF                          0x1EU    /*!< RW No Response and General Purpose Timer Configuration Register  */
 #define ST25R200_REG_NRT1                                  0x1FU    /*!< RW No Response Timer (MSB) Register 1                             */
 #define ST25R200_REG_NRT2                                  0x20U    /*!< RW No Response Timer (LSB) Register 2                             */
 #define ST25R200_REG_GPT1                                  0x21U    /*!< RW General Purpose Timer (MSB) Register 1                         */

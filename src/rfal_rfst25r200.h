@@ -135,7 +135,7 @@ typedef struct {
 
 /*! Struct that holds counters to control the FIFO on Tx and Rx                                                                          */
 typedef struct {
-  uint16_t                expWL;       /*!< The amount of bytes expected to be Tx when a WL interrupt occours                          */
+  uint16_t                expWL;       /*!< The amount of bytes expected to be Tx when a WL interrupt occurs                          */
   uint16_t                bytesTotal;  /*!< Total bytes to be transmitted OR the total bytes received                                  */
   uint16_t                bytesWritten;/*!< Amount of bytes already written on FIFO (Tx) OR read (RX) from FIFO and written on rxBuffer*/
   uint8_t                 status[ST25R200_FIFO_STATUS_LEN];   /*!< FIFO Status Registers                                              */
@@ -313,7 +313,7 @@ typedef void (*ST25R200IrqHandler)(void);
  * ISO15693 2000  8.4  t1 MIN = 4192/fc
  * ISO15693 2009  9.1  t1 MIN = 4320/fc
  * Digital 2.1 B.5 FDTV,LISTEN,MIN  = 4310/fc
- * Set FDT Listen one step earlier than on the more recent spec versions for greater interoprability
+ * Set FDT Listen one step earlier than on the more recent spec versions for greater interoperability
  */
 #define RFAL_FDT_LISTEN_V_ADJUSTMENT    64U
 
@@ -509,7 +509,7 @@ class RfalRfST25R200Class : public RfalRfClass {
     *
     * \param[in]  more    : 0x00 indicates it is last Configuration ID settings;
     *                       0x01 indicates more Configuration ID setting(s) are coming.
-    * \param[in]  *config : reference to the configuration list of current Configuraiton ID.
+    * \param[in]  *config : reference to the configuration list of current Configuration ID.
     *
     * \return ERR_PARAM   : if Configuration ID or parameter is invalid
     * \return ERR_NOMEM   : if LUT is full
@@ -1035,8 +1035,8 @@ class RfalRfST25R200Class : public RfalRfClass {
     *  \param[in] ignoreBits   : number of bits in the beginning where collisions will be ignored
     *  \param[in] picopassMode :  if set to true, the decoding will be according to Picopass
     *
-    *  \return ERR_RF_COLLISION : collision occured, data uncorrect
-    *  \return ERR_CRC          : CRC error, data uncorrect
+    *  \return ERR_RF_COLLISION : collision occurred, data incorrect
+    *  \return ERR_CRC          : CRC error, data incorrect
     *  \return ERR_TIMEOUT      : timeout waiting for data.
     *  \return ERR_NONE         : No error
     *
@@ -1089,7 +1089,7 @@ class RfalRfST25R200Class : public RfalRfClass {
     *  This function turn on oscillator and regulator and waits for the
     *  oscillator to become stable
     *
-    *  \return ERR_SYSTEM: Unable to verify oscilator enable|stable
+    *  \return ERR_SYSTEM: Unable to verify oscillator enable|stable
     *  \return ERR_NONE  : No error
     *****************************************************************************
     */
@@ -1502,7 +1502,7 @@ class RfalRfST25R200Class : public RfalRfClass {
     *  \param[in] tmo : time in milliseconds until timeout occurs. If set to 0
     *                   the functions waits forever.
     *
-    *  \return : 0 if timeout occured otherwise a mask indicating the cleared
+    *  \return : 0 if timeout occurred otherwise a mask indicating the cleared
     *              interrupts.
     *
     *****************************************************************************
@@ -1514,7 +1514,7 @@ class RfalRfST25R200Class : public RfalRfClass {
     *  \brief  Get status for the given interrupt
     *
     *  This function is used to check whether the interrupt given by \a mask
-    *  has occured. If yes the interrupt gets cleared. This function returns
+    *  has occurred. If yes the interrupt gets cleared. This function returns
     *  only status bits which are inside \a mask.
     *
     *  \param[in] mask : mask indicating the interrupt to check for.
@@ -1530,7 +1530,7 @@ class RfalRfST25R200Class : public RfalRfClass {
     *  \brief  Init the 200 interrupt
     *
     *  This function is used to check whether the interrupt given by \a mask
-    *  has occured.
+    *  has occurred.
     *
     *****************************************************************************
     */
@@ -1561,7 +1561,7 @@ class RfalRfST25R200Class : public RfalRfClass {
     *****************************************************************************
     *  \brief  ISR Service routine
     *
-    *  This function modiefies the interupt
+    *  This function modiefies the interrupt
     *****************************************************************************
     */
     void  st25r200Isr(void);
@@ -1656,7 +1656,7 @@ class RfalRfST25R200Class : public RfalRfClass {
     *  auto-increment feature. That is, after each read the address pointer
     *  inside the ST25R200 gets incremented automatically
     *
-    *  \param[in]  reg: Address of the frist register to read from
+    *  \param[in]  reg: Address of the first register to read from
     *  \param[in]  values: pointer to a buffer where the result shall be written to
     *  \param[in]  length: Number of registers to be read out
     *
@@ -1691,7 +1691,7 @@ class RfalRfST25R200Class : public RfalRfClass {
     *  auto-increment feature. That is, after each write the address pointer
     *  inside the ST25R200 gets incremented automatically
     *
-    *  \param[in]  reg   : Address of the frist register to write
+    *  \param[in]  reg   : Address of the first register to write
     *  \param[in]  values: pointer to a buffer containing the values to be written
     *  \param[in]  length: Number of values to be written
     *
@@ -1793,7 +1793,7 @@ class RfalRfST25R200Class : public RfalRfClass {
     *
     *  This function is used to write \a val to test address \a reg within the ST25R200
     *
-    *  \param[in]  reg   : Address of the frist register to write
+    *  \param[in]  reg   : Address of the first register to write
     *  \param[in]  values: Pointer to a buffer containing the values to be written
     *  \param[in]  length: Number of values to be written
     *

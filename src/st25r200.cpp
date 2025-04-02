@@ -60,7 +60,7 @@
 #define ST25R200_TEST_TMR_TOUT_DELTA         2U      /*!< Timeout used during self test                                       */
 #define ST25R200_TEST_TMR_TOUT_8FC           (ST25R200_TEST_TMR_TOUT * 1695U)  /*!< Timeout in 8/fc                           */
 
-#define ST25R200_TEST_FD_TRESHOLD            60U     /*!< External carrier presence treshold                                 */
+#define ST25R200_TEST_FD_TRESHOLD            60U     /*!< External carrier presence threshold                                 */
 
 
 /*
@@ -92,7 +92,7 @@ ReturnCode RfalRfST25R200Class::st25r200WaitAgd(void)
 {
   uint32_t ts;
 
-  /* Wait for AGD to become stable whithin a max ST25R200_TOUT_AGD_OK */
+  /* Wait for AGD to become stable within a max ST25R200_TOUT_AGD_OK */
   ts = millis();
   while ((millis() < (ts + ST25R200_TOUT_AGD_OK))) {
     if (st25r200CheckReg(ST25R200_REG_DISPLAY1, ST25R200_REG_DISPLAY1_agd_ok, ST25R200_REG_DISPLAY1_agd_ok)) {
@@ -355,7 +355,7 @@ ReturnCode RfalRfST25R200Class::st25r200MeasureCombinedIQ(uint8_t *res)
     /*******************************************************************************/
     /* Usage of SQRT from math.h and float. Due to compiler, resources or          *
      * performance issues sqrt may be not enabled by default. Possible use of      *
-     * a less accurate aproach such as:                                            */
+     * a less accurate approach such as:                                            */
 
 #if 0
     if (sI < 0) {

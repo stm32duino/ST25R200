@@ -43,7 +43,7 @@
  */
 
 /* Feature switch may be enabled or disabled by user at rfal_platform.h
- * Default configuration (ST25R dependant) also provided at rfal_defConfig.h
+ * Default configuration (ST25R dependent) also provided at rfal_defConfig.h
  *
  *    RFAL_FEATURE_NFCV
  */
